@@ -11,10 +11,15 @@
 |
 */
 
+// Landing page (root route)
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Login/register
 Auth::routes();
 
+// Dashboard
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/posts/create', 'PostController@create');
