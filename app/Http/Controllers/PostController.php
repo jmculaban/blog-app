@@ -31,6 +31,15 @@ class PostController extends Controller
         // Save it to the database
         $new_post->save();
         // Redirect user somewhere
-        return redirect('/posts/create');
+        return redirect('/posts');
+    }
+
+    // Endpoint: GET /posts
+    public function index()
+    {
+        // Retrieve all posts
+        $posts = Post::all();
+        // Redirect the user along with the posts
+        return view('posts.index')->with('posts', $posts);
     }
 }

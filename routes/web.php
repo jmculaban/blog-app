@@ -25,3 +25,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Post
 Route::get('/posts/create', 'PostController@create'); // route to the new post page
 Route::post('/posts', 'PostController@store'); // create new post page
+Route::get('/posts', 'PostController@index'); // display all posts
