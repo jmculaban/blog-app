@@ -9,7 +9,9 @@
 				<div class="row">
 					<div class="card mb-3" style="width:50%">
 						<div class="card-body">
-							<h3 class="card-title">{{ $post->title }}</h3>
+							<h3 class="card-title">
+								<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+							</h3>
 							<p class="card-text">{{ $post->content }}</p>
 						</div>
 					</div>

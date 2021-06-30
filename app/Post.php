@@ -12,4 +12,10 @@ class Post extends Model
         'content',
         'user_id'
     ];
+
+    // Relationships
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

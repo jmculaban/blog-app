@@ -42,4 +42,13 @@ class PostController extends Controller
         // Redirect the user along with the posts
         return view('posts.index')->with('posts', $posts);
     }
+
+    // Endpoint: GET /posts/{id}
+    public function show($id)
+    {
+        // Retrieve a specific post
+        $post = Post::find($id);
+        // Redirect user to a location with that post
+        return view('posts.show')->with('post', $post);
+    }
 }
