@@ -16,6 +16,12 @@
 							@if (Auth::check())
 								{{-- Update --}}
 								<a href="/posts/{{ $post->id }}/edit" class="btn btn-outline-primary mr-1">Edit</a>
+								{{-- Archive --}}
+								<form method="POST" action="/posts/{{ $post->id }}/archive">
+									@method('PUT')
+									@csrf
+									<button type="submit" class="btn btn-outline-warning mr-1">Archive</button>
+								</form>
 								{{-- Delete --}}
 								<form method="POST" action="/posts/{{ $post->id }}">
 									@method('DELETE')

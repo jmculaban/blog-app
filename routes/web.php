@@ -31,3 +31,4 @@ Route::get('/posts/{id}', 'PostController@show'); //display a single post
 Route::put('/posts/{id}', 'PostController@update'); // update an existing post
 Route::delete('/posts/{id}', 'PostController@destroy'); // delete an existing post
 Route::get('/posts/{id}/edit', 'PostController@edit'); // display the post to be edited
+Route::put('/posts/{id}/archive', 'PostController@archive'); // archive a post

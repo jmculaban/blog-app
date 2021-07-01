@@ -91,4 +91,13 @@ class PostController extends Controller
         // Redirect the user somewhere
         return redirect("/posts");
     }
+
+    // Endpoint: PUT /posts/{id}/archive
+    public function archive($id)
+    {
+        $post = Post::find($id);
+        $post->is_active = false;
+        $post->save();
+        return redirect("/posts/$id");
+    }
 }
