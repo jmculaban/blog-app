@@ -51,4 +51,11 @@ class PostController extends Controller
         // Redirect user to a location with that post
         return view('posts.show')->with('post', $post);
     }
+
+    // Endpoint: GET /posts/my-posts
+    public function myPosts()
+    {
+        $user_posts = Auth::user()->posts;
+        return view('posts.index')->with('posts', $user_posts);
+    }
 }
