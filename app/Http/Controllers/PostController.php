@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     // Endpoint: /posts/create
@@ -57,5 +57,27 @@ class PostController extends Controller
     {
         $user_posts = Auth::user()->posts;
         return view('posts.index')->with('posts', $user_posts);
+    }
+
+    // Endpoint: GET /posts/{id}/edit
+    public function edit($id)
+    {
+        // Find the post
+        $post = Post::find($id);
+        // Redirect the user to page where the post will be edited
+        return view('posts.edit')->with('post', $post);
+    }
+
+    // Endpoint: PUT /posts/{id}
+    public function update($id, Request $req)
+    {
+        // Find an existing post to be updated
+        $post = Post::find($id); 
+        // Set the new values of an existing post
+        $post->title = $req->input('title');
+        $post->content = $req->input('content');
+        $post->save();
+        // Redirect to page of individual post
+        return redirect("/posts/$id");
     }
 }

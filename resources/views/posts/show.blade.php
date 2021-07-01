@@ -10,7 +10,10 @@
 					</h3>
 					<small>Posted by: {{ $post->user->name }}</small> &middot; <small>Created at {{ (new Carbon\Carbon($post->created_at))->toFormattedDateString() }}</small>
 					<p class="card-text">{{ $post->content }}</p>
-					<a href="/posts">Back</a>
+					<a href="/posts" class="btn btn-outline-secondary">Back</a>
+					@if (Auth::check())
+						<a href="/posts/{{ $post->id }}/edit" class="btn btn-outline-primary">Edit</a>
+					@endif
 				</div>
 			</div>
 		</div>
