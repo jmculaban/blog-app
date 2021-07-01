@@ -8,7 +8,7 @@
 					<h3 class="card-title">
 						{{ $post->title }}
 					</h3>
-					<small>Posted by: {{ $post->user->name }}</small> &middot; <small>Created at {{ $post->created_at }}</small>
+					<small>Posted by: {{ $post->user->name }}</small> &middot; <small>Created at {{ (new Carbon\Carbon($post->created_at))->toFormattedDateString() }}</small>
 					<p class="card-text">{{ $post->content }}</p>
 					<a href="/posts">Back</a>
 				</div>
