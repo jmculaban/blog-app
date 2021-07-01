@@ -80,4 +80,15 @@ class PostController extends Controller
         // Redirect to page of individual post
         return redirect("/posts/$id");
     }
+
+    // Endpoint: DELETE /posts/{id}
+    public function destroy($id)
+    {
+        // Find an existing post to be deleted
+        $post = Post::find($id);
+        // Delete the post
+        $post->delete();
+        // Redirect the user somewhere
+        return redirect("/posts");
+    }
 }
