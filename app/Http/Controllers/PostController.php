@@ -98,6 +98,6 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->is_active = false;
         $post->save();
-        return redirect("/posts/$id");
+        return redirect("/posts");
     }
 }
