@@ -12,6 +12,7 @@
 							<h3 class="card-title">
 								<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
 							</h3>
+							<small>{{ $post->is_active ? '' : 'archived' }}</small>
 							<p class="card-text">{{ $post->content }}</p>
 						</div>
 					</div>
