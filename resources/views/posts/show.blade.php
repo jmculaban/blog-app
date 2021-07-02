@@ -13,7 +13,7 @@
 					<div class="container">
 						<div class="row">
 							<a href="/posts" class="btn btn-outline-secondary mr-1">Back</a>
-							@if (Auth::check())
+							@if (Auth::check() && ($post->user_id === Auth::user()->id))
 								{{-- Update --}}
 								<a href="/posts/{{ $post->id }}/edit" class="btn btn-outline-primary mr-1">Edit</a>
 								{{-- Archive --}}

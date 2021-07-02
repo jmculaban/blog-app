@@ -11,6 +11,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('is.post.owner')->except(['index', 'show', 'myPosts', 'create']);
     }
 
     // Endpoint: /posts/create
