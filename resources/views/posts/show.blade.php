@@ -12,6 +12,25 @@
 					<p class="card-text">{{ $post->content }}</p>
 					<div class="container">
 						<div class="row">
+							@if (Auth::check() && ($post->user_id !== Auth::user()->id))
+								@if ($post->likes()->where('user_id', Auth::user()->id)->exists())
+									<form method="POST" action="/posts/{{ $post->id }}/{{ Auth::user()->id }}/dislike">
+										@method('PUT')
+										@csrf
+										<button type="submit" class="btn btn-link">Unlike</button>
+									</form>
+								@else
+									<form method="POST" action="/posts/{{ $post->id }}/{{ Auth::user()->id }}/like">
+										@method('PUT')
+										@csrf
+										<button type="submit" class="btn btn-link">Like</button>
+									</form>
+								@endif
+							@endif
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
 							<a href="/posts" class="btn btn-outline-secondary mr-1">Back</a>
 							@if (Auth::check() && ($post->user_id === Auth::user()->id))
 								{{-- Update --}}

@@ -11,7 +11,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
-        $this->middleware('is.post.owner')->except(['index', 'show', 'myPosts', 'create']);
+        $this->middleware('is.post.owner')->except(['index', 'show', 'myPosts', 'create', 'like', 'dislike']);
     }
 
     // Endpoint: /posts/create
@@ -100,5 +100,21 @@ class PostController extends Controller
         $post->is_active = false;
         $post->save();
         return redirect("/posts");
+    }
+
+    // Endpoint: PUT /posts/{post_id}/{user_id}/like
+    public function like($post_id, $user_id)
+    {
+        $post = Post::find($post_id);
+        $post->likes()->attach($user_id);
+        return redirect("/posts/$post_id");
+    }
+
+    // Endpoint: PUT /posts/{post_id}/{user_id}/dislike
+    public function dislike($post_id, $user_id)
+    {
+        $post = Post::find($post_id);
+        $post->likes()->detach($user_id);
+        return redirect("/posts/$post_id");
     }
 }
